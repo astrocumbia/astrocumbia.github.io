@@ -1,95 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <meta charset="UTF-8">
-  <title>Irvin Castellanos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <title>astrocumbia</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      height: 100vh;
-      background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-      font-size: 18px;
-    }
-    
-    .container {
-      width: 70%;
-      margin: auto;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      top: 35%;
-      -webkit-transform: translateY(-35%);
-      -ms-transform: translateY(-35%);
-      transform: translateY(-35%);
-    }
-    
-    .circle {
+    .circular--square {
       border-radius: 50%;
-      margin: auto;
     }
-
-    h1 {
-      font-size: 40px;
-      padding: 30px 0px 0px 0px;
+    ul
+    {
+      display:flex;  
+      list-style:none;
     }
-
-    ul {
-      width: 30%;
-      margin: auto;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-    }
-    li {
-      list-style-type: none;
-      margin-right: 15px;
-    }
-    
-    article {
-      text-align: center;
-      padding:  0% 25% 0% 25%;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      font-size: 18px;
-      font-weight: normal;
-      color: #484349;
-    }
-
-    a {
-      color: blue;
-      text-decoration: none;
-    }
-
-
   </style>
 </head>
 <body>
-    <div class="container">
-      
-        <img class="circle" src="https://avatars1.githubusercontent.com/u/3143098?s=460&v=4" alt="profile image" height="200" width="200">
-      <h1>Irvin Castellanos</h1>
-    
-      <ul>
-          
-        <li><a class="link" href="https://www.linkedin.com/in/irvin-castellanos-juárez-823a66b8" target="_blank">Linkedin</a></li>
-          <li><a class="link" href="https://github.com/astrocumbia" target="_blank">Github</a></li>
-          <li><a class="link" href="https://medium.com/@astrocumbia" target="_blank">Blog</a></li>
-          
-      </ul>
-      
-      <article>
-          <p><b>Computer engineer</b>, specialized in mobile development iOS/Android, Unix Systems & Algorithms. I’m currently Android developer at <a href="https://www.albo.mx">albo.mx</a></p>
-      </article>
-      
+  <section class="text-gray-700 body-font">
+    <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+      <img class="lg:w-1/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded circular--square" alt="hero" src="https://avatars1.githubusercontent.com/u/3143098?s=460&v=4">
+      <div class="text-center lg:w-2/3 w-full">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+          Irvin Castellanos
+        </h1>
+        <p class="mb-8 leading-relaxed justify">
+          I'm a <b>software engineer</b> 👨🏽‍💻.</br>
+          The last 4 years I have been working as a mobile developer 📱 in different Startups in Mexico city. I code in <b>Kotlin</b>, <b>Swift</b> and <b>Dart</b> for mobile development and <b>ruby</b>, <b>elixir</b> and <b>Javascript</b> for backend. I like to learn about algorithms, computer science and mathematics.
+        </p>
+
+        <!-- <p class="mb-8 leading-relaxed justify-center">
+          <ul>
+            <li><a class="link" href="https://www.linkedin.com/in/irvin-castellanos-juárez-823a66b8" target="_blank">Linkedin</a></li>
+              <li><a class="link" href="https://github.com/astrocumbia" target="_blank">Github</a></li>
+              <li><a class="link" href="https://medium.com/@astrocumbia" target="_blank">Blog</a></li>
+              
+          </ul>
+        </p> -->
+        <!-- <div class="flex justify-center">
+          <button class="inline-flex text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg">Button</button>
+          <button class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Button</button>
+        </div> -->
+      </div>
     </div>
-    
+  </section>
 </body>
 </html>
-
