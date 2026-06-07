@@ -3,46 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <title>astrocumbia</title>
   <style>
-    .circular--square {
-      border-radius: 50%;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    ul
-    {
-      display:flex;  
-      list-style:none;
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: hsla(232, 73%, 65%, 1);
+      background: -webkit-linear-gradient(90deg, hsla(232, 73%, 65%, 1) 0%, hsla(279, 33%, 48%, 1) 100%);
+      background: -moz-linear-gradient(90deg, hsla(232, 73%, 65%, 1) 0%, hsla(279, 33%, 48%, 1) 100%);
+      background: linear-gradient(90deg, hsla(232, 73%, 65%, 1) 0%, hsla(279, 33%, 48%, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6274E7", endColorstr="#8752A3", GradientType=1);
+      font-family: 'Courier New', Courier, monospace;
+      color: white;
+      font-size: 20px;
+      padding: 1rem;
+    }
+
+    pre {
+      line-height: 1.5;
+      white-space: pre;
+    }
+
+    #speech {
+      display: inline-block;
+      width: 22ch;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    .token {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .token.visible {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <section class="text-gray-700 body-font">
-    <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-      <img class="lg:w-1/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded circular--square" alt="hero" src="https://avatars1.githubusercontent.com/u/3143098?s=460&v=4">
-      <div class="text-center lg:w-2/3 w-full">
-        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-          Irvin Castellanos
-        </h1>
-        <p class="mb-8 leading-relaxed justify">
-          I'm a <b>software engineer</b> 👨🏽‍💻.</br>
-          The last 4 years I have been working as a mobile developer 📱 in different Startups in Mexico city. I code in <b>Kotlin</b>, <b>Swift</b> and <b>Dart</b> for mobile development and <b>ruby</b>, <b>elixir</b> and <b>Javascript</b> for backend. I like to learn about algorithms, computer science and mathematics.
-        </p>
+  <div class="terminal">
+    <pre id="cow"></pre>
+  </div>
 
-        <!-- <p class="mb-8 leading-relaxed justify-center">
-          <ul>
-            <li><a class="link" href="https://www.linkedin.com/in/irvin-castellanos-juárez-823a66b8" target="_blank">Linkedin</a></li>
-              <li><a class="link" href="https://github.com/astrocumbia" target="_blank">Github</a></li>
-              <li><a class="link" href="https://medium.com/@astrocumbia" target="_blank">Blog</a></li>
-              
-          </ul>
-        </p> -->
-        <!-- <div class="flex justify-center">
-          <button class="inline-flex text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg">Button</button>
-          <button class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Button</button>
-        </div> -->
-      </div>
-    </div>
-  </section>
+  <script>
+    const tokens = [
+      { text: " cu",      wait: 1300 },
+      { text: " cu",      wait:  800 },
+      { text: " cu",      wait:  500 },
+      { text: " cumbia",  wait:  300 },
+      { text: " 💃",      wait:  200 },
+      { text: "🕺",       wait: 12000 },
+    ];
+
+    const cow = document.getElementById("cow");
+
+    const tokenSpans = tokens.map(t => {
+      const s = document.createElement("span");
+      s.className = "token";
+      s.textContent = t.text;
+      return s;
+    });
+
+
+    cow.innerHTML =
+      " ----------------------\n" +
+      "&lt;<span id='speech'></span>&gt;\n" +
+      " ----------------------\n" +
+      "        \\   ^__^\n" +
+      "         \\  (oo)\\_______\n" +
+      "            (__)\\       )\\/\\\n" +
+      "                ||----w |\n" +
+      "                ||     ||";
+
+    const speech = document.getElementById("speech");
+    tokenSpans.forEach(s => speech.appendChild(s));
+
+    let step = 0;
+
+    function animate() {
+      // Fade in current token
+      tokenSpans[step].classList.add("visible");
+      const wait = tokens[step].wait;
+      step++;
+
+      if (step < tokens.length) {
+        setTimeout(animate, wait);
+      } else {
+        // All visible — wait, then reset and loop
+        setTimeout(() => {
+          tokenSpans.forEach(s => s.classList.remove("visible"));
+          step = 0;
+          // Small pause before restarting so the fade-out is visible
+          setTimeout(animate, 800);
+        }, wait);
+      }
+    }
+
+    animate();
+  </script>
 </body>
 </html>
